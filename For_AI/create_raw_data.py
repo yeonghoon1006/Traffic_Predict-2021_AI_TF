@@ -57,8 +57,8 @@ timestamp = time.mktime(dt.timetuple())
 
 # Postgresql 에 연결
 
-zabbix_db = pymysql.connect(host='localhost', user='guro', password='WkaWk*2!', db='zabbix', charset='utf8') 
-ai_db = pymysql.connect(host='localhost', user='guro', password='WkaWk*2!', db='ai', charset='utf8')
+zabbix_db = pymysql.connect(host='localhost', user='***', password='*****', db='zabbix', charset='utf8') 
+ai_db = pymysql.connect(host='localhost', user='***', password='*****', db='ai', charset='utf8')
 
 cursor = zabbix_db.cursor()
 cursor_ai = ai_db.cursor()
