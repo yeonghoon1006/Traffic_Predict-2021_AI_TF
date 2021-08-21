@@ -16,7 +16,7 @@ inter = sys.argv[2]
 date_in = sys.argv[3]
 
 # postgresql 의 AI database에 접속
-ai_db = pymysql.connect(host='127.0.0.1', user='guro', password='WkaWk*2!', db='AI', charset='utf8')
+ai_db = pymysql.connect(host='127.0.0.1', user='***', password='****', db='AI', charset='utf8')
 cursor_ai = ai_db.cursor()
 
 # 장비와 interface 에 맞는 key_(interface 명) 추출
