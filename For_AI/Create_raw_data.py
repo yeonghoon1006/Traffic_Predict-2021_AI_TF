@@ -63,17 +63,41 @@ ai_db = pymysql.connect(host='localhost', user='guro', password='WkaWk*2!', db='
 cursor = zabbix_db.cursor()
 cursor_ai = ai_db.cursor()
 
-# zabbix 에 쌓이는 데이터 파싱
-sql = "select items.itemid, items.key_, items.hostid, hosts.host, history_uint.clock, history_uint.value from items JOIN hosts ON hosts.hostid = items.hostid JOIN history_uint ON history_uint.itemid = items.itemid where history_uint.clock < '"+str(timestamp)+"' and history_uint.clock >='"+str(timestamp-60)+"' and hosts.host NOT IN ('Zabbix server');"
-
+# zabbix database 에서 host(스위치,라우터) 목록 파싱
+sql = "select host, hostid from hosts;"
 cursor.execute(sql)
 result = cursor.fetchall()
 
-# zabbix 에서 필요한 data 만 AI DB 에 ISNERT
-
 for row in result:
-	sql2 = "insert into raw_data(itemid,key_,hostid,host,clock,value,day,holiday) values ('"+str(row[0])+"','"+row[1]+"','"+str(row[2])+"','"+row[3]+"','"+str(row[4])+"','"+str(row[5])+"','"+str(yoil)+"','"+str(holiday)+"');"
-	cursor_ai.execute(sql2)
+	host=str(row[0])
+	hostid=str(row[1])
+	
+	# host 내역 중 원하는 host 만 추출, host 이름 = 테이블 이름 생성
+	if 'Guro' in host and 'Templates' not in host and ('MEA' in host or 'MNP' in host or 'SEA' in host or 'MPC' in host or 'PET' in host or 'MVA' in host):
+		sql = "create table if not exists `AI`.`"+host+"`(itemid bigint(20) unsigned, key_  varchar(255), clock int(11), value bigint(20) unsigned, yoil int, holiday int, PRIMARY KEY(itemid, clock));"
+		cursor.execute(sql)		
+		
+		# host 에 맞는 item 추출
+		sql = "select itemid, key_ from items where hostid="+hostid+";"
+		cursor.execute(sql)
+		result2 = cursor.fetchall()
+		
+		# item 에 5분 내에 쌓인 data를 AI Database 에 insert
+		for row2 in result2:
+			itemid=str(row2[0])
+			key=str(row2[1])
+			if '{#SNMPINDEX}' not in key and 'CRC' not in key:
+				#print(hostid+"|"+str(row2[0])+"|"+str(row2[1]))
+				sql="select clock,value from history_uint where itemid="+itemid+" and clock < '"+str(timestamp)+"' and clock >= '"+ str(timestamp-60)+"';"
+				cursor.execute(sql)
+				result3 = cursor.fetchall()
+				for row3 in result3:
+					clock=str(row3[0])
+					value=str(row3[1])
+					#print(host+"|"+hostid+"|"+itemid+"|"+key+"|"+clock+"|"+value+"|"+str(yoil)+"|"+str(holiday))
+					sql2 = "insert into `"+host+"`(itemid,key_,clock,value,yoil,holiday) values ('"+itemid+"','"+key+"','"+clock+"','"+value+"','"+str(yoil)+"','"+str(holiday)+"');"
+					cursor_ai.execute(sql2)
+				
 
 
 zabbix_db.commit()
