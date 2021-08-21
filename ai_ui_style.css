@@ -1,0 +1,305 @@
+#icon{
+position:absolute;
+top:10%;
+left:26%;
+width:45%;
+//top:40%
+//left:50%;
+//width:40%;
+//margin-left:-20%;
+//margin-top:-20%;
+height:101%;
+}
+
+#linear_div{
+position:absolute;
+top:78%;
+left:-0.3%;
+//border-width : 1px;
+//border-style : solid;
+//border-color : rgb(238,238,238);
+}
+
+#linear_div2{
+position:absolute;
+top:78%;
+right:-0.3%;
+//border-width : 1px;
+//border-style : solid;
+//border-color : rgb(238,238,238);
+}
+
+
+#bg{
+//background-color:#d0f9ff;
+background-color:#000000;
+//141619;
+}
+
+#background{
+height: 100%;
+width: 100%;
+position:fixed;
+top:0%;
+left:0%;
+}
+
+#graph{
+        top: 4%;
+        right : -130px;
+        position: absolute;
+        padding: 15px;
+        width: 180px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        transition: 0.3s;
+}
+
+#graph:hover {
+  //background:#EA575B;
+  right: -10;
+}
+
+#map{
+        top: 12%;
+        right : -130px;
+        width: 10%;
+        position: absolute;
+        padding: 15px;
+        width: 180px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        transition: 0.3s;
+
+}
+#map:hover {
+
+        right: -10;
+}
+
+#log {
+
+        top: 20%;
+        right : -130px;
+        width: 10%;
+        position: absolute;
+        padding: 15px;
+        width: 180px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        transition: 0.3s;
+
+
+
+}
+
+#log:hover {
+
+        right: -10;
+
+}
+
+
+
+
+#traffic-map-text:hover:before {
+
+}
+
+a {
+        position:absolute;
+        display: inline-block;
+        height: atuo;
+        margin: 10px 0;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: center;
+        line-height: 0px;
+}
+
+}
+
+
+
+
+#traffic-map-text:hover:before {
+
+}
+
+a {
+        position:absolute;
+        display: inline-block;
+        height: atuo;
+        margin: 10px 0;
+        border-radius: 10px;
+        text-decoration: none;
+        font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-align: center;
+        line-height: 0px;
+}
+
+#mySideNav a {
+        position: absolute;
+        padding: 15px;
+        width: 100px;
+        text-decoration: none;
+        font-size: 20px;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        left: -80px; /* 왼쪽에 파묻기 */
+        transition: 0.3s;
+}
+
+#mySideNav a:hover {
+        background-color: #000;
+        left: 0;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Lobster+Two");
+h1 {
+    font-size: 4rem;
+    text-shadow: 0px 1px 0px white;
+    color: #ffffff;
+}
+
+.container {
+    position: fixed;
+//relative;
+    z-index: 0;
+    background-color: #141619;//000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    top:0%;
+    left:0%;
+
+}
+
+.pulse {
+    z-index: -1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 20rem;
+}
+
+.pulse circle {
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: 50% 50%;
+}
+
+.pulse circle:nth-child(2) {
+    fill: #ff5154;
+    animation: pulse 3s 0.7s cubic-bezier(0.5, 0.5, 0, 1);
+    animation-iteration-count: infinite;
+}
+
+.pulse circle:nth-child(3) {
+    fill: #7fc6a4;
+    animation: pulse 3s 1.3s cubic-bezier(0.5, 0.5, 0, 1);
+    animation-iteration-count: infinite;
+}
+
+.pulse circle:nth-child(4) {
+    fill: #e5f77d;
+    animation: pulse 3s 1.8s cubic-bezier(0.5, 0.5, 0, 1);
+    animation-iteration-count: infinite;
+}
+
+.pulse circle:nth-child(1) {
+    fill: #85d6c3;
+    animation: pulse 3s 3s cubic-bezier(0.5, 0.5, 0, 1);
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+    25% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+HTML CSS JSResult Skip Results Iframe
+EDIT ON
+body {
+  background: #000;
+  padding: 2rem;
+}
+
+h2 {
+  font-family: "Arial";
+  color: #fff;
+  top: -10%;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  line-height: 0.75;
+}
+
+span {
+  display: block;
+}
+
+span:not(.light) {
+  opacity: 0.5;
+  font-size: 30px;
+  -webkit-animation: flashText 0.9s ease-out alternate infinite;
+          animation: flashText 1s ease-out alternate infinite;
+}
+
+span.light {
+  position: relative;
+  display: inline-block;
+}
+span.light:before {
+  position: absolute;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  height: 120%;
+  background: #fff;
+  filter: blur(10px);
+  content: "";
+  opacity: 0;
+  -webkit-animation: flash 0.5s ease-out alternate infinite;
+          animation: flash 0.5s ease-out alternate infinite;
+}
+
+@-webkit-keyframes flash {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flashText {
+  to {
+    opacity: 0.15;
+  }
+}
+@keyframes flashText {
+  to {
+    opacity: 0.15;
+  }
+}
